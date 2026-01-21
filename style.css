@@ -1,0 +1,130 @@
+/* ===== RESET & GLOBAL ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: black;
+  overflow: hidden;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: white;
+  text-align: center;
+}
+
+/* ===== CANVAS ===== */
+canvas,
+#petals {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+}
+
+/* ===== SCENE ===== */
+.scene {
+  position: absolute;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 16px;
+}
+
+/* ===== SCENE 1 ===== */
+#scene1 h1 {
+  font-size: clamp(1.6rem, 5vw, 3rem);
+  color: gold;
+  text-shadow: 0 0 20px red;
+  z-index: 2;
+}
+
+/* ===== SCENE 2 (BÁNH CHƯNG) ===== */
+.box-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 500px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.box {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  border-radius: 14px;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 0 16px rgba(255,255,255,0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px gold;
+}
+
+.box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== SCENE 3 ===== */
+#scene3 h2 {
+  font-size: clamp(1.4rem, 4.5vw, 2.8rem);
+  color: yellow;
+  text-shadow: 0 0 20px red;
+  z-index: 4;
+  margin-top: 20px;
+  padding: 0 12px;
+}
+
+/* ===== HORSE ===== */
+#horse {
+  position: absolute;
+  bottom: 8vh;
+  left: -40vw;
+  width: clamp(140px, 30vw, 260px);
+  z-index: 3;
+  pointer-events: none;
+  animation: horseRun 7s linear infinite;
+}
+
+@keyframes horseRun {
+  from { left: -40vw; }
+  to   { left: 110vw; }
+}
+
+/* ===== TABLET ===== */
+@media (min-width: 768px) {
+  .box-container {
+    gap: 24px;
+  }
+
+  #horse {
+    bottom: 70px;
+    animation-duration: 8s;
+  }
+}
+
+/* ===== DESKTOP ===== */
+@media (min-width: 1024px) {
+  .box-container {
+    max-width: 700px;
+    gap: 30px;
+  }
+
+  .box {
+    max-width: 200px;
+    margin: auto;
+  }
+
+  #horse {
+    width: 280px;
+    bottom: 80px;
+  }
+}
