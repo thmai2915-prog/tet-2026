@@ -43,7 +43,7 @@ function fireworks(canvasId, heart = false) {
 
   // ❤️ Trái tim (giữ nguyên)
   function explodeHeart(x, y, color) {
-    for (let t = 0; t < Math.PI * 2; t += 0.15) {
+    for (let t = 0; t < Math.PI * 2; t += 0.3) {
       const vx = 16 * Math.pow(Math.sin(t), 3);
       const vy =
         -(13 * Math.cos(t)
@@ -99,9 +99,13 @@ function fireworks(canvasId, heart = false) {
   }
 
   // Bắn nhiều rocket
-  setInterval(() => {
+setInterval(() => {
+  if (heart) {
+    createRocket(); // chỉ 1 rocket cho trái tim
+  } else {
     for (let i = 0; i < 2; i++) createRocket();
-  }, 600);
+  }
+}, heart ? 1000 : 500);
 
   loop();
 }
